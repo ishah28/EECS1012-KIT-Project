@@ -1,0 +1,13 @@
+<!--Project Phase 1 code-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="phase1.js"></script>
+</head>
+
+<body>
+
+</body>
+
+</html>
