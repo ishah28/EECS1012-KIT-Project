@@ -1,9 +1,11 @@
 <!--Project Phase 1 code-->
+<!--TA email: mishat98@my.yorku.ca -->
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<script src="phase1.js"></script>
+<link rel="stylesheet" href="project.css">
+<script src="project.js"></script>
 </head>
 
 <body>
