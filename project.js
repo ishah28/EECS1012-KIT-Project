@@ -11,6 +11,7 @@ function instruct(){
 
 function play(){
     var output = document.getElementById("box");
+    //output.style.borderColor = "rgb(0, 19, 128)";
 
     //the main page disappear and the page to choose level shows up
     document.getElementById("main_page").style.display = "none";
@@ -18,7 +19,6 @@ function play(){
 }
 
 function level(num) {
-    document.getElementById("hh1").innerHTML = "hello";
     document.getElementById("box").style.display = "none";
     document.getElementById("playboard").style.display = "inline";
 
@@ -29,13 +29,28 @@ function add_images() {
     var row1 = document.getElementById("row1");
     var row2 = document.getElementById("row2");
     
-    if (imgId<maxImg){//TODO: send request to serverside to get randomly generated img id
-        var cell_1 = row1.insertCell(0);
+    if (imgId<maxImg){
+        var cell_1 = row1.insertCell(0);//TODO: send request to serverside to get randomly generated img id
         cell_1.innerHTML = "<img src= 'images/i1.jpg' alt='image 1'>";
+        //cell_1.style.borderColor = "red";
         var cell_2 = row2.insertCell(0);
-        cell_2.innerHTML = "<img src= 'images/i2.webp' alt='image 2'>";
+        cell_2.innerHTML = "<img src= 'images/img.jpg' alt='image 2'>";
+    }
+    if(imgId==maxImg){
+        alert("You've reached max number of images");
     }
     imgId++;
+}
+
+function homepage(){
+    document.getElementById("main_page").style.display = "inline-block";
+    document.getElementById("box").style.display = "inline-block";
+    document.getElementById("level_page").style.display = "none";
+    document.getElementById("playboard").style.display = "none";
+}
+
+function recipes(){
+    alert("Chocolate Cake:\nhttps://addapinch.com/the-best-chocolate-cake-recipe-ever/ \n\nCheesecake:\nhttps://sugarspunrun.com/best-cheesecake-recipe/ \n\n");
 }
 
 function exit(){
