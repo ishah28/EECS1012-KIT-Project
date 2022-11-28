@@ -15,11 +15,6 @@ function play(){
     //the main page disappear and the page to choose level shows up
     document.getElementById("main_page").style.display = "none";
     document.getElementById("level_page").style.display = "inline-block";
-
-    var navBar = document.createElement("button");
-    $(navBar).attr("href", "contact.asp", "title", "Menu");
-    $(output).append(navBar);
-    //output.innerHTML += "<ul><li><a onclick="exit()">Exit</a></li><li><a href="contact.asp">Menu</a></li></ul>";
 }
 
 function level(num) {
@@ -34,7 +29,7 @@ function add_images() {
     var row1 = document.getElementById("row1");
     var row2 = document.getElementById("row2");
     
-    if (imgId<maxImg){
+    if (imgId<maxImg){//TODO: send request to serverside to get randomly generated img id
         var cell_1 = row1.insertCell(0);
         cell_1.innerHTML = "<img src= 'images/i1.jpg' alt='image 1'>";
         var cell_2 = row2.insertCell(0);
