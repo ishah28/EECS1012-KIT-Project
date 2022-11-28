@@ -1,35 +1,85 @@
 #box {
-    border: 3px solid black;
-    width: 80%;
-    margin: auto;
-    text-align: center;
-    overflow: auto;
-    padding: 20px;
-  }
-  #mydata {
-    margin: 20px;
-    width: 80%;
-    margin: auto;
-    background: grey;
-    height: 60px;
-    font-family: monospace;
-    font-size: 2em;
-    text-align: center;
-  }
+  border: 3px solid black;
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  overflow: auto;
+  padding: 20px;
+}
 
-  button {
-    width: 200px;
-    height: 50px;
-    font-weight: bold;
-  }
+button {
+  width: 200px;
+  height: 50px;
+  font-weight: bold;
+}
 
-  button:hover{
-    color: black;
-    background-color: slateblue;
-  }
+button:hover{
+  color: black;
+  background-color: slateblue;
+}
   
-  h1{
-    text-align: center;
-    font-weight: bold;
-    font-size: 50 px;
-  }
+h1{
+  text-align: center;
+  font-weight: bold;
+  font-size: 50 px;
+}
+
+img{
+    width: 100px;
+    height: 70px;
+}
+
+ul {
+  list-style-type: none;
+  overflow: hidden;
+  background-color: rgb(198, 232, 248);
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 20px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color:rgb(68, 177, 250);
+}
+
+#main_page {
+  display: inline-block;
+}
+
+#level_page {
+  display: none;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+}
+
+#playboard {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  overflow: auto;
+  padding: 20px;
+  display: none;
+  border-color: rgb(0, 19, 128);
+}
+
+footer {
+  margin-top: 100px;
+}
+
+table {
+  margin-left: auto; 
+  margin-right: auto;
+}
