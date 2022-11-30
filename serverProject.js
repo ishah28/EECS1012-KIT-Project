@@ -1,22 +1,63 @@
 //Serverside JS File
 
-var img = new Array();
-var rightImg = new Array();
+var images;
+var express = require('express');
+var app = express();
 
-function init(num){
-    for (var i = 0; i<num; i++){
-        img[i] = Math.random()*4-1;//assigns id 1 - 4 corresponding to an image
-        rightImg[i] = Math.random(); //assigns a number from 0 - 1 
+var port = 3000;
+
+app.post('/post', (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    console.log("New attempt");
+    console.log("Received: ");
+    console.log(JSON.parse(req.query['data']));
+    var z = JSON.parse(req.query['data']);
+
+    if (z['action'] == 'generateImage') {
+        if (z['num_img'] == 0) {
+            images = [];
+        }
+        generateImage();
+        var jsontext = JSON.stringify({
+            'action': 'generateImage',
+            'highlighted_img': images[images.length - 1],
+            'msg': 'New highlighted image generated!!!'
+        });
+        console.log(jsontext);
+        console.log(images);
+        // send the response while including the JSON text		
+        res.send(jsontext);
+    } 
+    
+    else if (z['action'] == "evaluate") {
+        var maxImg = z['maxImg'];
+        var win = evaluate(z['selected_images'], maxImg);
+        var jsontext = JSON.stringify({
+            'action': 'evaluate',
+            'win': win,
+            'answer': images
+        });
+        console.log(jsontext);
+        res.send(jsontext);
+    } else {
+        res.send(JSON.stringify({ 'msg': 'error!!!' }));
     }
+}).listen(port);
+console.log("Server is running! (listening on port " + port + ")");
+
+function generateImage(){
+    var randomRow = Math.floor(Math.random()*2) + 1;
+    images.push(randomRow);
 }
 
-function checkRight(i, num){
-
-    if(rightImg[i]==num){
-        return true;
+function evaluate(selected, maxImg){
+    for (var i=0; i<images.length; i++) {
+        if (images[i] != selected[i]) {
+            return false;
+        }
     }
-    else{
-        return false;
+    if (selected.length < maxImg) {
+        return "pass";
     }
-
+    return true;
 }

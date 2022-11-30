@@ -24,11 +24,6 @@ h1{
   font-size: 50 px;
 }
 
-img{
-    width: 100px;
-    height: 70px;
-}
-
 ul {
   list-style-type: none;
   overflow: hidden;
@@ -65,6 +60,12 @@ li a:hover {
 img {
   width: 100px;
   height: 100px;
+  margin: 5px;
+}
+
+img:hover {
+  border: green solid 5px;
+  margin: 0px;
 }
 
 #playboard {

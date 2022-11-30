@@ -7,13 +7,13 @@
     <meta charset="UTF-8">
     <title>EECS KIT Project</title>
     <link rel="stylesheet" href="project.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="project.js"></script>
 </head>
 <body>
     <div id="box">
         <div id="main_page">
             <h1 id="hh1"> Image Randomiser </h1> <hr>
-            <!--<p id="mydata" class="newdata"> </p> -->
             <p> <button id="a" onclick="instruct()"> INSTRUCTIONS </button>
             <button id="b" onclick="play()"> PLAY </button>
             <button id="c" onclick="exit()"> EXIT </button>
@@ -36,17 +36,11 @@
             <li><a onclick="recipes()">Menu</a></li>
         </ul> 
         <h1>Click on the highlighted image</h1>
+        <p id="message"></p>
+        <div id="row1"></div>
+        <div id="row2"></div>
 
-        <table>
-            <tr id="row1">
-                <td><img src="images/i1.jpg" alt="image 1"></td>
-            </tr>
-            <tr id="row2">
-                <td><img src="images/img.jpg" alt="image 2"></td>
-            </tr>
-        </table>
-
-        <button onclick="add_images()">Click here</button>
+        <button id="check" onclick="checkResult()">CHECK</button>
         <footer> &copy; KITCats</footer>
     </div>
     
