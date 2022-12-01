@@ -15,17 +15,17 @@
         <div id="main_page">
             <h1 id="hh1"> Image Randomiser </h1> <hr>
             <p> <button id="a" onclick="instruct()"> INSTRUCTIONS </button>
-            <button id="b" onclick="play()"> PLAY </button>
-            <button id="c" onclick="exit()"> EXIT </button>
-            </p> 
+                <button id="b" onclick="play()"> PLAY </button>
+                <button id="c" onclick="exit()"> EXIT </button>
+            </p> <hr>
         </div>
         <div id="level_page">
             <h1 id="hh1"> Choose a difficulty level!</h1> <hr>
             <p> <button onclick="level(5)">EASY</button>
                 <button onclick="level(10)">MEDIUM</button>
                 <button onclick="level(15)">HARD</button>
-            </p>
-        </div><hr><br><br>
+            </p><hr>
+        </div> <br><br>
         <footer> &copy; KITCats</footer>
     </div>
 
@@ -34,13 +34,16 @@
             <li><a onclick="homepage()">Home</a></li>
             <li><a onclick="exit()">Exit</a></li>
             <li><a onclick="recipes()">Menu</a></li>
+            <li id="score">Score</li>
         </ul> 
+
         <h1>Click on the highlighted image</h1>
         <p id="message"></p>
         <div id="row1"></div>
         <div id="row2"></div>
 
         <button id="check" onclick="checkResult()">CHECK</button>
+        <p id="countImg"></p>
         <footer> &copy; KITCats</footer>
     </div>
     
