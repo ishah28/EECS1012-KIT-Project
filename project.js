@@ -6,6 +6,7 @@ var maxImg = 0;
 var id = 0;
 var selectedImages;
 var url = "http://localhost:3000/post";
+var currentImg = 0;
 
 function instruct(){
     alert("Instructions \n\nYou can choose from 3 difficulty levels. 2 images will be shown, with one image highlighted. If the highlighted image is clicked, then 2 new images appear. You need to click on the highlighted images in the order that they appeared on the webpage. If a wrong image is clicked, then the game ends!");
@@ -27,29 +28,26 @@ function recipes(){
     alert("Chocolate Cake:\nhttps://addapinch.com/the-best-chocolate-cake-recipe-ever/ \n\nCheesecake:\nhttps://sugarspunrun.com/best-cheesecake-recipe/ \n\n");
 }
 
-function exit(){
-    document.body.innerHTML="<h1><br/>Thanks for Playing! <br/><br/>Your score: "+score+"<br> You have left the game.</h1>";
-}
-
 function level(num) {
     document.getElementById("box").style.display = "none";
     document.getElementById("playboard").style.display = "inline";
     maxImg = num;
+    document.getElementById("score").innerHTML += ": "+score;
+    document.getElementById("countImg").innerHTML = currentImg+"/"+maxImg;
     add_images();
-
-    
+    currentImg ++;
 }
 
 function add_images() {
     var newImg1 = document.createElement("img");
-    $(newImg1).attr("src", "images/i1.jpg");
+    $(newImg1).attr("src", images());
     $(newImg1).attr("alt", "image 1");
     $(newImg1).attr("id", "img1" + id);
     $(newImg1).click({id: "img1"+id}, selectImage); 
     $("#row1").append(newImg1);
 
     var newImg2 = document.createElement("img");
-    $(newImg2).attr("src", "images/i2.jpg");
+    $(newImg2).attr("src", images());
     $(newImg2).attr("alt", "image 1");
     $(newImg2).attr("id", "img2" + id);
     $(newImg2).click({id: "img2"+id}, selectImage); 
@@ -79,11 +77,11 @@ function selectImage(event) {
     $("#img" + otherRow + col).css({'border': "none"});
     $("#img" + otherRow + col).css({'margin': "5px"});
 }
+
 /*
  * OnClick event handler for the CHECK button
  * send request to the server
  */
-
 function checkResult() {
     if (!selectedImages.includes(0)){
         $.post(
@@ -121,6 +119,8 @@ function response(data, status){
             $("#message").text("Oh no, it's not the right one!")
         } 
         else if (win == "pass") {
+            score += (maxImg/5); //for each difficulty level, multiplies points by 1, 2, or 3
+            $("#score").text("Score: "+score);
             add_images();
         }
         else {
@@ -130,10 +130,44 @@ function response(data, status){
     }
 }
 
-function resetImages() {
+function images(){
+    var out = "";
+    var num = Math.floor(Math.random()*7+1);
+
+    switch(num){ //randomly generates images to be displayed on webpage
+        case 1:
+            out = "images/i1.jpg";
+            break;
+        case 2:
+            out = "images/i2.jpg";
+            break;
+        case 3:
+            out = "images/i3.jpg";
+            break;
+        case 4:
+            out = "images/i4.jpeg";
+            break;
+        case 5:
+            out = "images/i5.jpg";
+            break;
+        case 6:
+            out = "images/i6.webp";
+            break;
+        case 7:
+            out = "images/i7.jpg";
+            break;
+    }
+    return out;
+}
+
+function resetImages() { //removes border from previous images
     $("img").css({"border": "none"});
 }
 
 function displayResult() {
     return true;
+}
+
+function exit(){
+    document.body.innerHTML="<h1><br/>Thanks for Playing! <br/><br/>Your score: "+score+"<br> You have left the game.</h1><br/><br/>";
 }
