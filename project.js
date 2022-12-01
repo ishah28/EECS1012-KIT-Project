@@ -35,7 +35,6 @@ function level(num) {
     document.getElementById("score").innerHTML += ": "+score;
     document.getElementById("countImg").innerHTML = currentImg+"/"+maxImg;
     add_images();
-    currentImg ++;
 }
 
 function add_images() {
@@ -121,10 +120,16 @@ function response(data, status){
         else if (win == "pass") {
             score += (maxImg/5); //for each difficulty level, multiplies points by 1, 2, or 3
             $("#score").text("Score: "+score);
+            currentImg++;
+            $("#countImg").text(currentImg+"/"+maxImg); //updates image count
             add_images();
         }
         else {
             $("#check").css({'visibility' : 'hidden'});
+            score += (maxImg/5); 
+            $("#score").text("Score: "+score);
+            currentImg++;
+            $("#countImg").text(currentImg+"/"+maxImg);
             alert("GG! You win. Click OK to see result, and play again.")
         }
     }
