@@ -16,7 +16,7 @@ button:hover{
   color: black;
   background-color: slateblue;
 }
-  
+ 
 h1{
   text-align: center;
   font-weight: bold;
@@ -59,11 +59,7 @@ img {
   width: 100px;
   height: 100px;
   margin: 5px;
-}
-
-img:hover {
-  border: green solid 5px;
-  margin: 0px;
+  border: 5px;
 }
 
 #playboard {
@@ -82,7 +78,7 @@ img:hover {
 }
 
 footer {
-  margin-top: 100px;
+  margin-top: 40px;
 }
 
 body {

@@ -1,12 +1,12 @@
 //Clientside JS File
 //atleast 3 mocha/chai test cases needed
 
-var score = 0;
-var maxImg = 0;
-var id = 0;
+var score;
+var maxImg;
+var id;
 var selectedImages;
 var url = "http://localhost:3000/post";
-var currentImg = 0;
+var currentImg;
 
 function instruct(){
     alert("Instructions \n\nYou can choose from 3 difficulty levels. 2 images will be shown, with one image highlighted. If the highlighted image is clicked, then 2 new images appear. You need to click on the highlighted images in the order that they appeared on the webpage. If a wrong image is clicked, then the game ends!");
@@ -29,10 +29,19 @@ function recipes(){
 }
 
 function level(num) {
+    maxImg = num;
+    score = 0;
+    id = 0;
+    currentImg = 0;
+    selectedImages = [];
+    $("#row1").text("");
+    $("#row2").text("");
+    $("h1").text("Click on the highlighted image");
+    $("#check").css({'visibility' : 'visible'});
+
     document.getElementById("box").style.display = "none";
     document.getElementById("playboard").style.display = "inline";
-    maxImg = num;
-    document.getElementById("score").innerHTML += ": "+score;
+    document.getElementById("score").innerHTML = "Score: "+score;
     document.getElementById("countImg").innerHTML = currentImg+"/"+maxImg;
     add_images();
 }
@@ -66,15 +75,13 @@ function selectImage(event) {
     selectedImages[col] = row;
     console.log(selectedImages);
     $(this).css({'border' : "green solid 5px"});
-    $(this).css({'margin' : "0px"});
     if (row == 1) {
         var otherRow = 2;
     }
     else {
         var otherRow = 1;
     }
-    $("#img" + otherRow + col).css({'border': "none"});
-    $("#img" + otherRow + col).css({'margin': "5px"});
+    $("#img" + otherRow + col).css({'border': "white solid 5px"});
 }
 
 /*
@@ -105,9 +112,8 @@ function response(data, status){
         resetImages();
         var highlighted = response['highlighted_img'];
         $("#img" + highlighted + id).css({'border': "yellow solid 5px"});
-        $("#img" + highlighted + id).css({'margin': "0px"});
         selectedImages = new Array(id+1).fill(0);
-        console.log(selectedImages)
+        console.log(selectedImages);
         id++;
     } 
     else if (response['action'] == 'evaluate'){
@@ -115,7 +121,8 @@ function response(data, status){
         var answer = response['answer'];
         
         if (win == false){
-            $("#message").text("Oh no, it's not the right one!")
+            $("#countImg").text("Oh no, it's not the right one! Click again");
+            displayResult(answer);
         } 
         else if (win == "pass") {
             score += (maxImg/5); //for each difficulty level, multiplies points by 1, 2, or 3
@@ -130,7 +137,10 @@ function response(data, status){
             $("#score").text("Score: "+score);
             currentImg++;
             $("#countImg").text(currentImg+"/"+maxImg);
-            alert("GG! You win. Click OK to see result, and play again.")
+            alert("GG! You win. Click OK to see result, and play again.");
+            $("h1").text("CONGRATULATIONS!!!");
+            $("#countImg").text("Go back to homepage and try another level");
+            $("img").off("click");
         }
     }
 }
@@ -161,16 +171,39 @@ function images(){
         case 7:
             out = "images/i7.jpg";
             break;
+        case 8:
+            out = "images/i8.jpg";
+            break;
+        case 9:
+            out = "images/i9.jpg";
+            break;
+        case 10:
+            out = "images/i10.jpg";
+            break;
+        case 11:
+            out = "images/i11.jpg";
+            break;
+        case 12:
+            out = "images/i12.jpg";
+            break;
     }
     return out;
 }
 
 function resetImages() { //removes border from previous images
-    $("img").css({"border": "none"});
+    $("img").css({"border": "white solid 5px"});
 }
 
-function displayResult() {
-    return true;
+function displayResult(result) {
+    for (var i=0; i<result.length; i++) {
+        if (selectedImages[i] == result[i]) {
+            $("#img" + result[i] + i).css({'border': "green solid 5px"});
+        }
+        else {
+            $("#img" + result[i] + i).css({'border': "yellow solid 5px"});
+            $("#img" + selectedImages[i] + i).css({'border': "red solid 5px"});
+        }
+    }
 }
 
 function exit(){
