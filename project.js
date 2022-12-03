@@ -46,6 +46,13 @@ function level(num) {
     add_images();
 }
 
+function lostGame(){
+    document.getElementById("playboard").style.display = "none";
+    document.getElementById("lost_game").style.display = "inline-block";
+    document.getElementById("hh2").innerHTML = "Game Over!"
+    document.getElementById("hh3").innerHTML = "Oh no, you clicked the wrong image! <br><br> Your score is: "+score;
+}
+
 function add_images() {
     var newImg1 = document.createElement("img");
     $(newImg1).attr("src", images());
@@ -121,8 +128,9 @@ function response(data, status){
         var answer = response['answer'];
         
         if (win == false){
-            $("#countImg").text("Oh no, it's not the right one! Click again");
-            displayResult(answer);
+            lostGame();
+            //$("#countImg").text("Oh no, it's not the right one! Click again");
+            //displayResult(answer);
         } 
         else if (win == "pass") {
             score += (maxImg/5); //for each difficulty level, multiplies points by 1, 2, or 3
