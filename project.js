@@ -1,7 +1,7 @@
 //Clientside JS File
 //atleast 3 mocha/chai test cases needed
 
-var score;
+var score = 0;
 var maxImg;
 var id;
 var selectedImages;
@@ -15,6 +15,7 @@ function instruct(){
 function play(){
     document.getElementById("main_page").style.display = "none";
     document.getElementById("level_page").style.display = "inline-block";
+    $("h1").text("Choose a difficulty level!");
 }
 
 function homepage(){
@@ -22,25 +23,27 @@ function homepage(){
     document.getElementById("box").style.display = "inline-block";
     document.getElementById("level_page").style.display = "none";
     document.getElementById("playboard").style.display = "none";
+    //document.getElementById("lost_game").style.display = "none";
+    $("h1").text("Image Randomiser");
 }
 
 function recipes(){
-    alert("Chocolate Cake:\nhttps://addapinch.com/the-best-chocolate-cake-recipe-ever/ \n\nCheesecake:\nhttps://sugarspunrun.com/best-cheesecake-recipe/ \n\n");
+    alert("Chocolate Cake:\nhttps://addapinch.com/the-best-chocolate-cake-recipe-ever/ \n\nCheesecake:\nhttps://sugarspunrun.com/best-cheesecake-recipe/ \n\nApple Pie\nhttps://www.foodnetwork.com/recipes/food-network-kitchen/apple-pie-recipe-2011423\n\n");
 }
 
 function level(num) {
     maxImg = num;
-    score = 0;
     id = 0;
     currentImg = 0;
     selectedImages = [];
     $("#row1").text("");
     $("#row2").text("");
-    $("h1").text("Click on the highlighted image");
+    $("h1").text("Click on the highlighted images");
     $("#check").css({'visibility' : 'visible'});
 
     document.getElementById("box").style.display = "none";
-    document.getElementById("playboard").style.display = "inline";
+    document.getElementById("lost_game").style.display = "none";
+    document.getElementById("playboard").style.display = "inline-block";
     document.getElementById("score").innerHTML = "Score: "+score;
     document.getElementById("countImg").innerHTML = currentImg+"/"+maxImg;
     add_images();
@@ -49,7 +52,7 @@ function level(num) {
 function lostGame(){
     document.getElementById("playboard").style.display = "none";
     document.getElementById("lost_game").style.display = "inline-block";
-    document.getElementById("hh2").innerHTML = "Game Over!"
+    $("h1").text("Game Over!");
     document.getElementById("hh3").innerHTML = "Oh no, you clicked the wrong image! <br><br> Your score is: "+score;
 }
 
@@ -120,7 +123,7 @@ function response(data, status){
         var highlighted = response['highlighted_img'];
         $("#img" + highlighted + id).css({'border': "yellow solid 5px"});
         selectedImages = new Array(id+1).fill(0);
-        console.log(selectedImages);
+        console.log(selectedImages)
         id++;
     } 
     else if (response['action'] == 'evaluate'){
@@ -129,8 +132,6 @@ function response(data, status){
         
         if (win == false){
             lostGame();
-            //$("#countImg").text("Oh no, it's not the right one! Click again");
-            //displayResult(answer);
         } 
         else if (win == "pass") {
             score += (maxImg/5); //for each difficulty level, multiplies points by 1, 2, or 3
@@ -145,9 +146,8 @@ function response(data, status){
             $("#score").text("Score: "+score);
             currentImg++;
             $("#countImg").text(currentImg+"/"+maxImg);
-            alert("GG! You win. Click OK to see result, and play again.");
-            $("h1").text("CONGRATULATIONS!!!");
-            $("#countImg").text("Go back to homepage and try another level");
+            alert("GG! You win. Click OK to see result, and play again.")
+            $("h1").text("Go back to homepage and try another level");
             $("img").off("click");
         }
     }
@@ -155,7 +155,7 @@ function response(data, status){
 
 function images(){
     var out = "";
-    var num = Math.floor(Math.random()*7+1);
+    var num = Math.floor(Math.random()*12+1);
 
     switch(num){ //randomly generates images to be displayed on webpage
         case 1:
@@ -186,7 +186,7 @@ function images(){
             out = "images/i9.jpg";
             break;
         case 10:
-            out = "images/i10.jpg";
+            out = "images/i10.jpeg";
             break;
         case 11:
             out = "images/i11.jpg";
@@ -202,7 +202,7 @@ function resetImages() { //removes border from previous images
     $("img").css({"border": "white solid 5px"});
 }
 
-function displayResult(result) {
+function displayResult() {
     for (var i=0; i<result.length; i++) {
         if (selectedImages[i] == result[i]) {
             $("#img" + result[i] + i).css({'border': "green solid 5px"});
