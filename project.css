@@ -16,7 +16,7 @@ button:hover{
   color: black;
   background-color: slateblue;
 }
- 
+  
 h1{
   text-align: center;
   font-weight: bold;
@@ -27,6 +27,8 @@ ul {
   list-style-type: none;
   overflow: hidden;
   background-color:pink;
+  padding-inline-end: 40px;
+  margin-right: 40px;
 }
 
 li {
@@ -62,8 +64,19 @@ img {
   border: 5px;
 }
 
+img:hover {
+  border: green solid 5px;
+}
+
 #playboard {
-  width: 80%;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  display: none;
+}
+
+#lost_game {
+  width: 100%;
   text-align: center;
   padding: 20px;
   display: none;
@@ -84,4 +97,5 @@ footer {
 body {
   border: solid 5px black; 
   margin: 5px;
+  align-content: center;
 }
