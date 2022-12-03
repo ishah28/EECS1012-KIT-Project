@@ -17,13 +17,13 @@
             <p> <button id="a" onclick="instruct()"> INSTRUCTIONS </button>
                 <button id="b" onclick="play()"> PLAY </button>
                 <button id="c" onclick="exit()"> EXIT </button>
-            </p> <hr>
+            </p><hr>
         </div>
         <div id="level_page">
             <h1 id="hh1"> Choose a difficulty level!</h1> <hr>
             <p> <button onclick="level(5)">EASY</button>
-                <button onclick="level(8)">MEDIUM</button>
-                <button onclick="level(10)">HARD</button>
+                <button onclick="level(10)">MEDIUM</button>
+                <button onclick="level(15)">HARD</button>
             </p><hr>
         </div> <br><br>
         <footer> &copy; KITCats</footer>
@@ -32,12 +32,12 @@
     <div id="playboard">
         <ul>
             <li><a onclick="homepage()">Home</a></li>
-            <li><a onclick="exit()">Exit</a></li>
             <li><a onclick="recipes()">Menu</a></li>
+            <li><a onclick="exit()">Exit</a></li>
             <li id="score"></li>
         </ul> 
 
-        <h1></h1>
+        <h1 id="hh1">Click on the highlighted images</h1>
         <h3 id="countImg"></h3>
         <div id="row1"></div>
         <div id="row2"></div>
@@ -47,7 +47,7 @@
     </div>
     
     <div id="lost_game" style="display:none">
-        <h1 id="hh2"> GAME OVER! </h1> <hr>
+        <h1 id="hh1"> Game Over! </h1> <hr>
         <h2 id="hh3"> </h2>
         <p> <button id="a" onclick="homepage()"> HOME </button>
             <button id="b" onclick="exit()"> EXIT </button>
