@@ -7,6 +7,7 @@ var id;
 var selectedImages;
 var url = "http://localhost:3000/post";
 var currentImg;
+var result;
 
 function instruct(){
     alert("Instructions \n\nYou can choose from 3 difficulty levels. 2 images will be shown, with one image highlighted. If the highlighted image is clicked, then 2 new images appear. You need to click on the highlighted images in the order that they appeared on the webpage. If a wrong image is clicked, then the game ends!");
@@ -23,7 +24,7 @@ function homepage(){
     document.getElementById("box").style.display = "inline-block";
     document.getElementById("level_page").style.display = "none";
     document.getElementById("playboard").style.display = "none";
-    //document.getElementById("lost_game").style.display = "none";
+    document.getElementById("lost_game").style.display = "none";
     $("h1").text("Image Randomiser");
 }
 
@@ -49,7 +50,7 @@ function level(num) {
     add_images();
 }
 
-function lostGame(){
+function lostGame(result){
     document.getElementById("playboard").style.display = "none";
     document.getElementById("lost_game").style.display = "inline-block";
     $("h1").text("Game Over!");
@@ -128,7 +129,7 @@ function response(data, status){
     } 
     else if (response['action'] == 'evaluate'){
         var win = response['win'];
-        var answer = response['answer'];
+        result = response['answer'];
         
         if (win == false){
             lostGame();
@@ -203,6 +204,9 @@ function resetImages() { //removes border from previous images
 }
 
 function displayResult() {
+    $("#lost_game").css("display", "none");
+    $("#playboard").css("display", "inline-block");
+    $("#check").css({'visibility' : 'hidden'});
     for (var i=0; i<result.length; i++) {
         if (selectedImages[i] == result[i]) {
             $("#img" + result[i] + i).css({'border': "green solid 5px"});
