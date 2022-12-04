@@ -135,11 +135,27 @@ function response(data, status){
             lostGame();
         } 
         else if (win == "pass") {
-            score += (maxImg/5); //for each difficulty level, multiplies points by 1, 2, or 3
-            $("#score").text("Score: "+score);
-            currentImg++;
-            $("#countImg").text(currentImg+"/"+maxImg); //updates image count
-            add_images();
+            if (maxImg == 5){ //for each difficulty level, multiplies points by 1, 2, or 3
+                score += 1;
+                $("#score").text("Score: "+score);
+                currentImg++;
+                $("#countImg").text(currentImg+"/"+maxImg); //updates image count
+                add_images();
+                }
+            else if (maxImg == 8){
+                score += 2;
+                $("#score").text("Score: "+score);
+                currentImg++;
+                $("#countImg").text(currentImg+"/"+maxImg); //updates image count
+                add_images();
+                }
+            else if (maxImg == 10){
+                score += 3;
+                $("#score").text("Score: "+score);
+                currentImg++;
+                $("#countImg").text(currentImg+"/"+maxImg); //updates image count
+                add_images();
+                }
         }
         else {
             $("#check").css({'visibility' : 'hidden'});
