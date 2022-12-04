@@ -26,11 +26,14 @@ function homepage(){
     document.getElementById("playboard").style.display = "none";
     document.getElementById("lost_game").style.display = "none";
     $("h1").text("Image Randomiser");
-    score = 0;
 }
 
-function recipes(){
-    alert("Chocolate Cake:\nhttps://addapinch.com/the-best-chocolate-cake-recipe-ever/ \n\nCheesecake:\nhttps://sugarspunrun.com/best-cheesecake-recipe/ \n\nApple Pie\nhttps://www.foodnetwork.com/recipes/food-network-kitchen/apple-pie-recipe-2011423\n\n");
+function drop() {
+    document.getElementById("dropDwn").style.display = "block";
+}
+window.onclick = function(event) {
+    if (!event.target.matches('#menu')) 
+        document.getElementById("dropDwn").style.display = "none";
 }
 
 function level(num) {
@@ -136,15 +139,31 @@ function response(data, status){
             lostGame();
         } 
         else if (win == "pass") {
-            score += maxImg;
-            $("#score").text("Score: "+score);
-            currentImg++;
-            $("#countImg").text(currentImg+"/"+maxImg); //updates image count
-            add_images();
+            if (maxImg == 5){ //for each difficulty level, multiplies points by 1, 2, or 3
+                score += 1;
+                $("#score").text("Score: "+score);
+                currentImg++;
+                $("#countImg").text(currentImg+"/"+maxImg); //updates image count
+                add_images();
+                }
+            else if (maxImg == 8){
+                score += 2;
+                $("#score").text("Score: "+score);
+                currentImg++;
+                $("#countImg").text(currentImg+"/"+maxImg); //updates image count
+                add_images();
+                }
+            else if (maxImg == 10){
+                score += 3;
+                $("#score").text("Score: "+score);
+                currentImg++;
+                $("#countImg").text(currentImg+"/"+maxImg); //updates image count
+                add_images();
+                }
         }
         else {
             $("#check").css({'visibility' : 'hidden'});
-            score += maxImg; 
+            score += (maxImg/5); 
             $("#score").text("Score: "+score);
             currentImg++;
             $("#countImg").text(currentImg+"/"+maxImg);
