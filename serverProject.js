@@ -47,12 +47,10 @@ console.log("Server is running! (listening on port " + port + ")");
 
 function generateImage(){
     var randomRow = Math.floor(Math.random()*2) + 1;
-    var images = new Array();
     images.push(randomRow);
 }
 
 function evaluate(selected, maxImg){
-    var selected = new Array();
     for (var i=0; i<images.length; i++) {
         if (images[i] != selected[i]) {
             return false;
