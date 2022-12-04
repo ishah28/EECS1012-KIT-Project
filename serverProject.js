@@ -17,7 +17,7 @@ app.post('/post', (req, res) => {
         if (z['num_img'] == 0) {
             images = [];
         }
-        generateImage();
+        images.push(generateImage());
         var jsontext = JSON.stringify({
             'action': 'generateImage',
             'highlighted_img': images[images.length - 1],
@@ -47,7 +47,7 @@ console.log("Server is running! (listening on port " + port + ")");
 
 function generateImage(){
     var randomRow = Math.floor(Math.random()*2) + 1;
-    images.push(randomRow);
+    return randomRow;
 }
 
 function evaluate(selected, maxImg){
