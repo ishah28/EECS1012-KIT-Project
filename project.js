@@ -26,6 +26,7 @@ function homepage(){
     document.getElementById("playboard").style.display = "none";
     document.getElementById("lost_game").style.display = "none";
     $("h1").text("Image Randomiser");
+    score = 0;
 }
 
 function recipes(){
@@ -135,31 +136,15 @@ function response(data, status){
             lostGame();
         } 
         else if (win == "pass") {
-            if (maxImg == 5){ //for each difficulty level, multiplies points by 1, 2, or 3
-                score += 1;
-                $("#score").text("Score: "+score);
-                currentImg++;
-                $("#countImg").text(currentImg+"/"+maxImg); //updates image count
-                add_images();
-                }
-            else if (maxImg == 8){
-                score += 2;
-                $("#score").text("Score: "+score);
-                currentImg++;
-                $("#countImg").text(currentImg+"/"+maxImg); //updates image count
-                add_images();
-                }
-            else if (maxImg == 10){
-                score += 3;
-                $("#score").text("Score: "+score);
-                currentImg++;
-                $("#countImg").text(currentImg+"/"+maxImg); //updates image count
-                add_images();
-                }
+            score += maxImg;
+            $("#score").text("Score: "+score);
+            currentImg++;
+            $("#countImg").text(currentImg+"/"+maxImg); //updates image count
+            add_images();
         }
         else {
             $("#check").css({'visibility' : 'hidden'});
-            score += (maxImg/5); 
+            score += maxImg; 
             $("#score").text("Score: "+score);
             currentImg++;
             $("#countImg").text(currentImg+"/"+maxImg);
