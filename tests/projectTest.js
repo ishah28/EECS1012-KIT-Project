@@ -12,7 +12,7 @@ describe('Testing functions in project.js and serverProject.js', function () {
     assert.typeOf(result, 'string');
   });
 
-  it('Test 3:  from type number', function () {
+  it('Test 3: the returned value from generateImage() is from type number', function () {
     var num = generateImage();
     assert.typeOf(num, 'number');
   });
