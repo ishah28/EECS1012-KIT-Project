@@ -3,8 +3,10 @@ assert = chai.assert;
 describe('Testing functions in project.js and serverProject.js', function () {
   var result = images();
   it('Test 1: images() in project.js returns something', function () {
+
     assert.exists(result, 'the return value is not null or undefined');
   });
+
 
   it('Test 2: the returned value from image() in project.js is from type string', function () {
     assert.typeOf(result, 'string');
@@ -23,3 +25,4 @@ describe('Testing functions in project.js and serverProject.js', function () {
   });
   
 })
+
