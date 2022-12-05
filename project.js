@@ -1,5 +1,4 @@
 //Clientside JS File
-//atleast 3 mocha/chai test cases needed
 
 var score = 0;
 var maxImg;
@@ -141,29 +140,29 @@ function response(data, status){
         else if (win == "pass") {
             if (maxImg == 5){ //for each difficulty level, multiplies points by 1, 2, or 3
                 score += 1;
-                $("#score").text("Score: "+score);
-                currentImg++;
-                $("#countImg").text(currentImg+"/"+maxImg); //updates image count
-                add_images();
-                }
+            }
             else if (maxImg == 8){
                 score += 2;
-                $("#score").text("Score: "+score);
-                currentImg++;
-                $("#countImg").text(currentImg+"/"+maxImg); //updates image count
-                add_images();
-                }
+            }
             else if (maxImg == 10){
                 score += 3;
-                $("#score").text("Score: "+score);
-                currentImg++;
-                $("#countImg").text(currentImg+"/"+maxImg); //updates image count
-                add_images();
-                }
+            }
+            $("#score").text("Score: "+score);
+            currentImg++;
+            $("#countImg").text(currentImg+"/"+maxImg); //updates image count
+            add_images();
         }
         else {
             $("#check").css({'visibility' : 'hidden'});
-            score += (maxImg/5); 
+            if (maxImg == 5){ //for each difficulty level, multiplies points by 1, 2, or 3
+                score += 1;
+            }
+            else if (maxImg == 8){
+                score += 2;
+            }
+            else if (maxImg == 10){
+                score += 3;
+            }
             $("#score").text("Score: "+score);
             currentImg++;
             $("#countImg").text(currentImg+"/"+maxImg);
