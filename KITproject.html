@@ -13,14 +13,14 @@
 <body>
     <div id="box">
         <div id="main_page">
-            <h1 id="hh1"> Image Randomiser </h1> <hr>
-            <p> <button id="a" onclick="instruct()"> INSTRUCTIONS </button>
-                <button id="b" onclick="play()"> PLAY </button>
-                <button id="c" onclick="exit()"> EXIT </button>
+            <h1> Image Randomiser </h1> <hr>
+            <p> <button onclick="instruct()"> INSTRUCTIONS </button>
+                <button onclick="play()"> PLAY </button>
+                <button onclick="exit()"> EXIT </button>
             </p><hr>
         </div>
         <div id="level_page">
-            <h1 id="hh1"> Choose a difficulty level!</h1> <hr>
+            <h1> Choose a difficulty level!</h1> <hr>
             <p> <button onclick="level(5)">EASY</button>
                 <button onclick="level(8)">MEDIUM</button>
                 <button onclick="level(10)">HARD</button>
@@ -47,7 +47,7 @@
             <li id="score"></li>
         </ul> 
 
-        <h1 id="hh1">Click on the highlighted images</h1>
+        <h1>Click on the highlighted images</h1>
         <h3 id="countImg"></h3>
         <div id="row1"></div>
         <div id="row2"></div>
@@ -57,11 +57,11 @@
     </div>
     
     <div id="lost_game" style="display:none">
-        <h1 id="hh1"> Game Over! </h1> <hr>
+        <h1> Game Over! </h1> <hr>
         <h2 id="hh3"> </h2>
-        <p> <button id="a" onclick="homepage()"> HOME </button>
-            <button id="a" onclick="displayResult()"> RESULT </button>
-            <button id="c" onclick="exit()"> EXIT </button>
+        <p> <button onclick="homepage()"> HOME </button>
+            <button onclick="displayResult()"> RESULT </button>
+            <button onclick="exit()"> EXIT </button>
         </p> <hr>
     </div>
     

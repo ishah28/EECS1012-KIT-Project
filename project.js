@@ -32,7 +32,7 @@ function drop() {
 }
 window.onclick = function(event) {
     if (!event.target.matches('#menu')) 
-        document.getElementById("dropDwn").style.display = "none";
+        $("dropDwn").css("display", "none");
 }
 
 function level(num) {

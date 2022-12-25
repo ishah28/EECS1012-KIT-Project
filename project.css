@@ -49,8 +49,8 @@ li a:hover {
   background-color:rgb(126, 191, 255);
 }
 
-.dropDwn {
-  display:none;
+#dropDwn {
+  display: none;
 }
 
 .drop {
